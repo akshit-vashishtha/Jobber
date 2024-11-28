@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@keyframes typewriter {
+    0%, 100% {
+      width: 0;
+    }
+    50% {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blinkCaret {
+    50% {
+      border-color: transparent;
+    }
+  }
+  
+  .typewriter {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid transparent;  /* Simulates the cursor */
+    animation: typewriter 4s steps(40) infinite, blinkCaret 0.75s step-end infinite;
+  }
+  

@@ -1,10 +1,10 @@
-import Header from "./components/Header"
-
+import Landing from "./components/landing/Landing"
 export default function App() {
   return (
-    <>
-      <Header/>
+    <div className="h-screen bg-white">
 
-    </>
+      <Landing/>
+      
+    </div>
   )
 }
