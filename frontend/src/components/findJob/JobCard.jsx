@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 export default function JobCard({ role, organisation, location, jobType, salary, tags }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -7,7 +6,7 @@ export default function JobCard({ role, organisation, location, jobType, salary,
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   return (
-    <div className="max-w-sm p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
+    <div className="w-[100%] h-[35vh] pl-4 pt-2 pr-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
       {/* Company Logo */}
       <div className="flex items-center mb-4">
         <img 
@@ -44,7 +43,7 @@ export default function JobCard({ role, organisation, location, jobType, salary,
       </div>
 
       {/* Action Button */}
-      <div className="flex justify-end">
+      <div className="flex justify-self-end">
         <button 
           className="px-4 py-2 bg-slate-500 text-white rounded-3xl text-sm font-medium hover:bg-black hover:text-white transition-colors"
           onClick={toggleModal}

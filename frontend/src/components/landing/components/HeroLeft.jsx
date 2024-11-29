@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 export default function HeroLeft() {
   return (
     <div className="h-screen w-full flex flex-col justify-center items-start p-10 ">
@@ -19,12 +19,16 @@ export default function HeroLeft() {
 
       {/* Button Section */}
       <div className="buttonSection mt-8 flex gap-6">
+        <Link to="login">
         <button className="h-12 w-48 bg-white text-black rounded-3xl font-medium hover:bg-gray-100 transition-colors duration-300">
           Login
         </button>
+        </Link>
+        <Link to="signup">
         <button className="h-12 w-48 bg-white text-black rounded-3xl font-medium hover:bg-gray-100 transition-colors duration-300">
           Signup
         </button>
+        </Link>
       </div>
     </div>
   );
