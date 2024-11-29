@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchSection from './SearchSection'
 import JobSection from './JobSection'
+import Footer from '../Footer'
 export default function FindJob() {
   return (
     <div className='h-screen mt-4 ml-8 mr-8'>
