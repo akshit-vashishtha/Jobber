@@ -87,14 +87,7 @@ export default function PostJob() {
         </div>
 
         {/* Attachments */}
-        <div className="mb-4">
-          <h2 className="text-xl mb-2">Attachments (Optional)</h2>
-          <input
-            type="file"
-            name="attachments"
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          />
-        </div>
+        
 
         {/* Submit Button */}
         <div className="text-center">

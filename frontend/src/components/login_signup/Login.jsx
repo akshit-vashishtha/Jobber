@@ -17,7 +17,7 @@ export default function Login() {
 
       const data = await response.json();
       if (response.ok) {
-        window.location.href = "/dashboard"; // Redirect to dashboard after login
+        window.location.href = "/findjob"; // Redirect to dashboard after login
       } else {
         alert(data.message);
       }
