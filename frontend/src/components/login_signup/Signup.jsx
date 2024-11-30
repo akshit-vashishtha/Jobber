@@ -1,19 +1,31 @@
 import React, { useState } from "react";
 
 export default function Signup() {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your signup logic here
-    console.log("Signing up with:", { username, email, password });
-    
-    // Clear the inputs after submission
-    setUsername('');
-    setEmail('');
-    setPassword('');
+    try {
+      const response = await fetch("http://localhost:8000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert("Signup successful!");
+        window.location.href = "/login";
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   return (
@@ -35,7 +47,7 @@ export default function Signup() {
                 <input
                   type="text"
                   placeholder="Username"
-                  value={username}
+                  value={name}
                   onChange={(e) => setUsername(e.target.value)}
                   className="w-full p-4 pl-5 rounded-lg bg-white bg-opacity-10 border border-white/30 text-white 
                   placeholder-gray-400 outline-none focus:border-white 

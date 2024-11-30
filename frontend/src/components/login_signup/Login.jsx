@@ -4,14 +4,26 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your login logic here
-    console.log("Logging in with:", { email, password });
-    
-    // Clear the inputs after submission
-    setEmail('');
-    setPassword('');
+    try {
+      const response = await fetch("http://localhost:8000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        window.location.href = "/dashboard"; // Redirect to dashboard after login
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.log("Error:", error);
+    }
   };
 
   return (

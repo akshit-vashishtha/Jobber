@@ -13,7 +13,7 @@ app.use(cookieParser());
 app.use(cors());
 
 const corsOptions = {
-    origin: 'http://localhost:3000', 
+    origin: 'http://localhost:5173', 
     credentials: true, 
 };
 const protect = require('./middleware/authmiddleware');
@@ -22,6 +22,7 @@ const protect = require('./middleware/authmiddleware');
 
 const PORT = process.env.PORT;
 app.use(express.json());
+app.use('/', loginRouter);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, ).then(() => {
@@ -32,7 +33,8 @@ mongoose.connect(process.env.MONGO_URI, ).then(() => {
 
 
 
-app.use('/', loginRouter);
+
+
 
 
 
