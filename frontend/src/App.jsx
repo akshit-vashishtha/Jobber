@@ -21,7 +21,6 @@ export default function App() {
         </div>
       )}
 
-<<<<<<< Updated upstream
       {/* Dynamic Routes */}
       <div className={`flex-grow ${hideHeaderFooter ? "" : "pt-16"} bg-gray-50`}>
         <AppRoutes />
@@ -33,19 +32,6 @@ export default function App() {
           <Footer />
         </div>
       )}
-=======
-      {/* Content Section */}
-      {/* <div className="flex-grow pt-16 bg-gray-50">
-        <FindJob />
-         <Landing/>
-      </div> */}
-      <Login/>
-        {/* <Signup/> */}
-      {/* Footer
-      <div className="bg-gray-800 text-white">
-        <Footer />
-      </div> */}
->>>>>>> Stashed changes
     </div>
   );
 }
