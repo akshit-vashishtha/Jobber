@@ -1,17 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 export default function JobCard({ role, organisation, location, jobType, salary, tags }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // Function to handle opening/closing the modal
-  const toggleModal = () => setIsModalOpen(!isModalOpen);
-
   return (
     <div className="w-[100%] h-[35vh] pl-4 pt-2 pr-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
       {/* Company Logo */}
       <div className="flex items-center mb-4">
-        <img 
-          src="https://via.placeholder.com/50" 
-          alt="Company Logo" 
+        <img
+          src="https://via.placeholder.com/50"
+          alt="Company Logo"
           className="h-12 w-12 rounded-full border border-gray-300"
         />
         <div className="ml-3">
@@ -44,32 +41,15 @@ export default function JobCard({ role, organisation, location, jobType, salary,
 
       {/* Action Button */}
       <div className="flex justify-self-end">
-        <button 
-          className="px-4 py-2 bg-slate-500 text-white rounded-3xl text-sm font-medium hover:bg-black hover:text-white transition-colors"
-          onClick={toggleModal}
-        >
-          View More
-        </button>
+        {/* Pass props using the state */}
+        <Link to="/jobpage" state={{ role, location, salary }}>
+          <button
+            className="px-4 py-2 bg-slate-500 text-white rounded-3xl text-sm font-medium hover:bg-black hover:text-white transition-colors"
+          >
+            View More
+          </button>
+        </Link>
       </div>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-8 rounded-lg w-1/3">
-            <h2 className="text-xl font-semibold">{role} - {organisation}</h2>
-            <p className="text-sm mt-4">Location: {location}</p>
-            <p className="text-sm">Job Type: {jobType}</p>
-            <p className="text-sm">Salary: {salary}</p>
-            <p className="mt-4">More details about the job can go here...</p>
-            <button 
-              className="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg"
-              onClick={toggleModal}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
