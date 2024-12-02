@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 export default function BasicInfo({ role, location, salary }) {
   return (
     <div className="basicinfo h-[50vh] bg-black flex items-center flex-col gap-6 pt-11 relative">
@@ -18,7 +18,10 @@ export default function BasicInfo({ role, location, salary }) {
         </div>
       </div>
       <div className='buttons flex gap-16'>
+        <Link to="/findjob">
         <button className='bg-white text-black h-9 w-32 rounded-full hover:bg-gray-800 hover:text-white'>See all jobs</button>
+        </Link>
+        
         <button className='bg-green-400 text-black h-9 w-32 rounded-full hover:bg-green-500'>Apply now</button>
       </div>
     </div>

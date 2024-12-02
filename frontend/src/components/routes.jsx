@@ -6,7 +6,7 @@ import FindJob from "./findJob/FindJob";
 import Signup from "./login_signup/Signup";
 import Login from "./login_signup/Login";
 import JobPage from "./jobPage/JobPage";
-
+import Profile from "./profile/Profile";
 export default function AppRoutes() {
   return (
     <Routes>
@@ -16,6 +16,7 @@ export default function AppRoutes() {
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
       <Route path="/jobpage" element={<JobPage/>}/>
+      <Route path="/profile" element={<Profile/>}></Route>
     </Routes>
   );
 }
