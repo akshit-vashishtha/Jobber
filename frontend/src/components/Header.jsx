@@ -1,11 +1,26 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleDropdown = () => {
     setIsDropdownVisible(!isDropdownVisible);
   };
+
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownVisible(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -43,7 +58,7 @@ export default function Header() {
           </ul>
 
           {/* User Profile Section */}
-          <div className="relative flex items-center">
+          <div className="relative flex items-center" ref={dropdownRef}>
             <button
               type="button"
               className="flex text-sm bg-gray-800 rounded-full focus:outline-none"
@@ -56,38 +71,22 @@ export default function Header() {
               />
             </button>
             {isDropdownVisible && (
-              <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg dark:bg-gray-800 z-10">
-                <div className="px-4 py-3">
-                  <p className="text-sm text-gray-900 dark:text-white">
-                    Bonnie Green
-                  </p>
-                  <p className="text-sm text-gray-500 truncate dark:text-gray-400">
-                    name@flowbite.com
-                  </p>
-                </div>
+              <div className="absolute right-0 mt-32 w-48 bg-white rounded-md shadow-lg dark:bg-gray-800 z-10">
+                {/* Dropdown content */}
+                
                 <ul className="py-2">
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
-                    >
-                      Dashboard
-                    </a>
+                <Link to="profile">
+                <li>
+                    <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200">Profile</p>
                   </li>
+                </Link>
+                  
                   <li>
                     <a
                       href="#"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
                     >
-                      Settings
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
-                    >
-                      Sign out
+                      Logout
                     </a>
                   </li>
                 </ul>

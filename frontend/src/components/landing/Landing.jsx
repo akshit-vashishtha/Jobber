@@ -9,7 +9,6 @@ export default function Landing() {
       <div className="hero h-screen">
         <Hero/>
       </div>
-
     </div>
   )
 }

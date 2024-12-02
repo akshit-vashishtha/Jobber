@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRoutes from "./components/routes";
 import JobPage from "./components/jobPage/JobPage";
+import Test from "./components/Test";
 export default function App() {
   const location = useLocation(); // Get the current location
 
@@ -24,6 +25,7 @@ export default function App() {
       {/* Dynamic routes */}
       <div className={`flex-grow ${hideHeaderFooter ? "" : "pt-16"} bg-gray-50`}>
         <AppRoutes />
+        {/* <Test/> */}
         {/* <JobPage/> */}
       </div>
 
