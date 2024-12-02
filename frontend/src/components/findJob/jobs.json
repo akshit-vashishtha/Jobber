@@ -1,234 +1,131 @@
 [
-    {
-      "role": "Software Engineer",
-      "organisation": "TechCorp Inc.",
-      "location": "Remote",
-      "jobType": "Full-Time",
-      "salary": "$80k - $100k",
-      "tags": ["React", "JavaScript", "Remote", "Frontend"]
-    },
-    {
-      "role": "Product Manager",
-      "organisation": "Innovative Solutions",
-      "location": "New York, NY",
-      "jobType": "Full-Time",
-      "salary": "$120k - $150k",
-      "tags": ["Product Management", "Agile", "Leadership", "B2B"]
-    },
-    {
-      "role": "Data Scientist",
-      "organisation": "DataTech Labs",
-      "location": "San Francisco, CA",
-      "jobType": "Contract",
-      "salary": "$100k - $130k",
-      "tags": ["Python", "Machine Learning", "AI", "Data Analysis"]
-    },
-    {
-      "role": "UX/UI Designer",
-      "organisation": "DesignWorks Studio",
-      "location": "Los Angeles, CA",
-      "jobType": "Full-Time",
-      "salary": "$70k - $90k",
-      "tags": ["Design", "UX/UI", "Figma", "Adobe XD"]
-    },
-    {
-      "role": "Backend Developer",
-      "organisation": "CloudTech Solutions",
-      "location": "Remote",
-      "jobType": "Full-Time",
-      "salary": "$90k - $120k",
-      "tags": ["Node.js", "Express", "MongoDB", "Backend"]
-    },
-    {
-      "role": "Frontend Developer",
-      "organisation": "WebWorks",
-      "location": "Austin, TX",
-      "jobType": "Part-Time",
-      "salary": "$60k - $80k",
-      "tags": ["Vue.js", "CSS", "HTML", "JavaScript"]
-    },
-    {
-      "role": "Mobile Developer",
-      "organisation": "AppInnovate",
-      "location": "Chicago, IL",
-      "jobType": "Full-Time",
-      "salary": "$95k - $110k",
-      "tags": ["React Native", "iOS", "Android", "Mobile Development"]
-    },
-    {
-      "role": "Cloud Architect",
-      "organisation": "SkyTech Solutions",
-      "location": "Remote",
-      "jobType": "Full-Time",
-      "salary": "$120k - $160k",
-      "tags": ["AWS", "Azure", "Cloud Infrastructure", "DevOps"]
-    },
-    {
-      "role": "Cybersecurity Engineer",
-      "organisation": "SecureNet",
-      "location": "San Francisco, CA",
-      "jobType": "Full-Time",
-      "salary": "$110k - $140k",
-      "tags": ["Security", "Network Security", "Firewalls", "Penetration Testing"]
-    },
-    {
-      "role": "Full Stack Developer",
-      "organisation": "Innovative Devs",
-      "location": "Remote",
-      "jobType": "Contract",
-      "salary": "$100k - $130k",
-      "tags": ["JavaScript", "Node.js", "React", "MongoDB"]
-    },
-    {
-      "role": "Business Analyst",
-      "organisation": "Global Enterprises",
-      "location": "Boston, MA",
-      "jobType": "Full-Time",
-      "salary": "$70k - $90k",
-      "tags": ["Business Strategy", "Data Analysis", "Excel", "SQL"]
-    },
-    {
-      "role": "Sales Manager",
-      "organisation": "SalesPro Inc.",
-      "location": "Dallas, TX",
-      "jobType": "Full-Time",
-      "salary": "$75k - $95k",
-      "tags": ["Sales", "Management", "B2B", "CRM"]
-    },
-    {
-      "role": "HR Manager",
-      "organisation": "PeopleFirst",
-      "location": "Miami, FL",
-      "jobType": "Full-Time",
-      "salary": "$80k - $100k",
-      "tags": ["Human Resources", "Recruitment", "Employee Relations", "HR Systems"]
-    },
-    {
-      "role": "Marketing Specialist",
-      "organisation": "MarketMasters",
-      "location": "Los Angeles, CA",
-      "jobType": "Full-Time",
-      "salary": "$50k - $70k",
-      "tags": ["SEO", "Google Ads", "Marketing Strategy", "Social Media"]
-    },
-    {
-      "role": "Graphic Designer",
-      "organisation": "Creative Studios",
-      "location": "Remote",
-      "jobType": "Part-Time",
-      "salary": "$40k - $60k",
-      "tags": ["Photoshop", "Illustrator", "Design", "Graphics"]
-    },
-    {
-      "role": "Project Manager",
-      "organisation": "DevOps Solutions",
-      "location": "Remote",
-      "jobType": "Full-Time",
-      "salary": "$100k - $120k",
-      "tags": ["Agile", "Scrum", "Team Management", "Project Planning"]
-    },
-    {
-      "role": "DevOps Engineer",
-      "organisation": "TechOps Corp.",
-      "location": "New York, NY",
-      "jobType": "Full-Time",
-      "salary": "$110k - $140k",
-      "tags": ["Kubernetes", "Docker", "CI/CD", "AWS"]
-    },
-    {
-      "role": "Content Writer",
-      "organisation": "WritersGuild",
-      "location": "Remote",
-      "jobType": "Part-Time",
-      "salary": "$30k - $50k",
-      "tags": ["Content Writing", "SEO", "Blogging", "Copywriting"]
-    },
-    {
-      "role": "Data Analyst",
-      "organisation": "Analytics Pro",
-      "location": "Chicago, IL",
-      "jobType": "Full-Time",
-      "salary": "$60k - $80k",
-      "tags": ["SQL", "Excel", "Data Visualization", "Data Science"]
-    },
-    {
-      "role": "SEO Specialist",
-      "organisation": "SEO Experts",
-      "location": "Austin, TX",
-      "jobType": "Full-Time",
-      "salary": "$50k - $70k",
-      "tags": ["SEO", "Google Analytics", "Keyword Research", "Content Strategy"]
-    },
-    {
-      "role": "Video Editor",
-      "organisation": "Creative Media",
-      "location": "Los Angeles, CA",
-      "jobType": "Part-Time",
-      "salary": "$40k - $60k",
-      "tags": ["Video Editing", "Premiere Pro", "Final Cut Pro", "Post Production"]
-    },
-    {
-      "role": "Web Designer",
-      "organisation": "WebDesign Pro",
-      "location": "Remote",
-      "jobType": "Freelance",
-      "salary": "$50k - $70k",
-      "tags": ["UI/UX", "Web Design", "Figma", "Sketch"]
-    },
-    {
-      "role": "QA Engineer",
-      "organisation": "QA Solutions",
-      "location": "San Francisco, CA",
-      "jobType": "Full-Time",
-      "salary": "$90k - $110k",
-      "tags": ["Testing", "Automation", "QA", "Selenium"]
-    },
-    {
-      "role": "Accountant",
-      "organisation": "FinancePlus",
-      "location": "New York, NY",
-      "jobType": "Full-Time",
-      "salary": "$70k - $90k",
-      "tags": ["Accounting", "Tax", "CPA", "Excel"]
-    },
-    {
-      "role": "Customer Support Manager",
-      "organisation": "SupportTech",
-      "location": "Remote",
-      "jobType": "Full-Time",
-      "salary": "$65k - $85k",
-      "tags": ["Customer Support", "Management", "CRM", "Helpdesk"]
-    },
-    {
-      "role": "Business Development Manager",
-      "organisation": "GrowthInc",
-      "location": "Austin, TX",
-      "jobType": "Full-Time",
-      "salary": "$80k - $100k",
-      "tags": ["Sales", "Business Development", "Client Management", "Networking"]
-    },
-    {
-      "role": "Network Engineer",
-      "organisation": "NetworkPlus",
-      "location": "Chicago, IL",
-      "jobType": "Full-Time",
-      "salary": "$70k - $90k",
-      "tags": ["Networking", "Cisco", "Firewall", "Troubleshooting"]
-    },
-    {
-      "role": "Cloud Engineer",
-      "organisation": "CloudTech",
-      "location": "Remote",
-      "jobType": "Full-Time",
-      "salary": "$100k - $120k",
-      "tags": ["AWS", "Google Cloud", "Cloud Infrastructure", "DevOps"]
-    },
-    {
-      "role": "Java Developer",
-      "organisation": "DevOps Solutions",
-      "location": "San Francisco, CA",
-      "jobType": "Full-Time",
-      "salary": "$110k - $130k",
-      "tags": ["Java", "Spring", "Microservices", "Backend"]
-    }
+  {
+    "role": "Software Engineer",
+    "organisation": "TechCorp Inc.",
+    "location": "Remote",
+    "jobType": "Full-Time",
+    "salary": "$80k - $100k",
+    "tags": ["React", "JavaScript", "Remote", "Frontend"],
+    "description": "We are looking for a skilled front-end developer to join our team and help build innovative user interfaces.",
+    "responsibilities": [
+      "Develop and maintain front-end features.",
+      "Collaborate with designers and backend developers.",
+      "Ensure responsiveness and performance of web applications.",
+      "Write clean and reusable code."
+    ],
+    "startDate": "December 10, 2024",
+    "estimatedDelivery": "6 months"
+  },
+  {
+    "role": "Product Manager",
+    "organisation": "Innovative Solutions",
+    "location": "New York, NY",
+    "jobType": "Full-Time",
+    "salary": "$120k - $150k",
+    "tags": ["Product Management", "Agile", "Leadership", "B2B"],
+    "description": "Lead the product development process and ensure alignment with business goals.",
+    "responsibilities": [
+      "Define product vision and strategy.",
+      "Work closely with cross-functional teams.",
+      "Oversee product lifecycle from ideation to launch."
+    ],
+    "startDate": "January 5, 2025",
+    "estimatedDelivery": "12 months"
+  },
+  {
+    "role": "Data Scientist",
+    "organisation": "DataTech Labs",
+    "location": "San Francisco, CA",
+    "jobType": "Contract",
+    "salary": "$100k - $130k",
+    "tags": ["Python", "Machine Learning", "AI", "Data Analysis"],
+    "description": "Analyze data and build machine learning models to help businesses make data-driven decisions.",
+    "responsibilities": [
+      "Develop data models and algorithms.",
+      "Work with large datasets and derive meaningful insights.",
+      "Collaborate with engineers to deploy machine learning models."
+    ],
+    "startDate": "February 1, 2025",
+    "estimatedDelivery": "9 months"
+  },
+  {
+    "role": "UX/UI Designer",
+    "organisation": "DesignWorks Studio",
+    "location": "Los Angeles, CA",
+    "jobType": "Full-Time",
+    "salary": "$70k - $90k",
+    "tags": ["Design", "UX/UI", "Figma", "Adobe XD"],
+    "description": "Design intuitive and user-friendly interfaces for web and mobile applications.",
+    "responsibilities": [
+      "Create wireframes and prototypes.",
+      "Work closely with developers to ensure design implementation.",
+      "Conduct user research to inform design decisions."
+    ],
+    "startDate": "January 20, 2025",
+    "estimatedDelivery": "6 months"
+  },
+  {
+    "role": "Backend Developer",
+    "organisation": "CloudTech Solutions",
+    "location": "Remote",
+    "jobType": "Full-Time",
+    "salary": "$90k - $120k",
+    "tags": ["Node.js", "Express", "MongoDB", "Backend"],
+    "description": "Build and maintain scalable backend systems for web applications.",
+    "responsibilities": [
+      "Develop RESTful APIs.",
+      "Collaborate with front-end developers to integrate user-facing elements.",
+      "Ensure the performance, scalability, and security of the application."
+    ],
+    "startDate": "March 1, 2025",
+    "estimatedDelivery": "12 months"
+  },
+  {
+    "role": "Frontend Developer",
+    "organisation": "WebWorks",
+    "location": "Austin, TX",
+    "jobType": "Part-Time",
+    "salary": "$60k - $80k",
+    "tags": ["Vue.js", "CSS", "HTML", "JavaScript"],
+    "description": "Develop user interfaces and ensure high-quality web application performance.",
+    "responsibilities": [
+      "Build responsive and interactive front-end features.",
+      "Optimize applications for maximum speed and scalability.",
+      "Collaborate with back-end developers to integrate APIs."
+    ],
+    "startDate": "April 1, 2025",
+    "estimatedDelivery": "4 months"
+  },
+  {
+    "role": "Mobile Developer",
+    "organisation": "AppInnovate",
+    "location": "Chicago, IL",
+    "jobType": "Full-Time",
+    "salary": "$95k - $110k",
+    "tags": ["React Native", "iOS", "Android", "Mobile Development"],
+    "description": "Develop cross-platform mobile applications for iOS and Android.",
+    "responsibilities": [
+      "Write high-quality, maintainable mobile code.",
+      "Collaborate with designers to create user-friendly mobile applications.",
+      "Test and debug mobile applications to ensure functionality."
+    ],
+    "startDate": "May 15, 2025",
+    "estimatedDelivery": "8 months"
+  },
+  {
+    "role": "Cloud Architect",
+    "organisation": "SkyTech Solutions",
+    "location": "Remote",
+    "jobType": "Full-Time",
+    "salary": "$120k - $160k",
+    "tags": ["AWS", "Azure", "Cloud Infrastructure", "DevOps"],
+    "description": "Design and implement scalable cloud-based infrastructure for web applications.",
+    "responsibilities": [
+      "Design cloud solutions and services.",
+      "Work with development teams to ensure cloud readiness.",
+      "Optimize cloud-based architectures for performance and cost efficiency."
+    ],
+    "startDate": "June 1, 2025",
+    "estimatedDelivery": "10 months"
+  }
 ]

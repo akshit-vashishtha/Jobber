@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import AppRoutes from "./components/routes";
-
+import JobPage from "./components/jobPage/JobPage";
 export default function App() {
   const location = useLocation(); // Get the current location
 
@@ -21,17 +21,21 @@ export default function App() {
         </div>
       )}
 
-      {/* Dynamic Routes */}
+      {/* Dynamic routes */}
       <div className={`flex-grow ${hideHeaderFooter ? "" : "pt-16"} bg-gray-50`}>
         <AppRoutes />
+        {/* <JobPage/> */}
       </div>
 
       {/* Conditionally render Footer */}
-      {!hideHeaderFooter && (
+      {/* {!hideHeaderFooter && (
         <div className="bg-gray-800 text-white">
           <Footer />
         </div>
-      )}
+      )} */}
+
+      
+
     </div>
   );
 }
