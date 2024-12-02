@@ -75,7 +75,7 @@ export default function Header() {
                 {/* Dropdown content */}
                 
                 <ul className="py-2">
-                <Link to="profile">
+                <Link to="dashboard/profile">
                 <li>
                     <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200">Profile</p>
                   </li>

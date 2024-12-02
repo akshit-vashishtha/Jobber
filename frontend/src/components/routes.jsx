@@ -1,22 +1,29 @@
-// routes.jsx
 import { Routes, Route } from "react-router-dom";
-import Landing from "./landing/Landing"
-import PostJob from "./postJob/PostJob";
-import FindJob from "./findJob/FindJob";
+import Landing from "./landing/Landing";
 import Signup from "./login_signup/Signup";
 import Login from "./login_signup/Login";
-import JobPage from "./jobPage/JobPage";
-import Profile from "./profile/Profile";
+
+
+import Dashboard from "./dashboard"; // A wrapper for protected routes
+import ProtectedRoute from "./protectedRoute";
 export default function AppRoutes() {
   return (
     <Routes>
+      {/* Public Routes */}
       <Route path="/" element={<Landing />} />
-      <Route path="/postjob" element={<PostJob />} />
-      <Route path="/findjob" element={<FindJob />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/jobpage" element={<JobPage/>}/>
-      <Route path="/profile" element={<Profile/>}></Route>
+      
+
+      {/* Protected Routes */}
+      <Route
+        path="/dashboard/*"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }

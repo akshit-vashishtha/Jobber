@@ -23,6 +23,9 @@ const protect = require('./middleware/authmiddleware');
 const PORT = process.env.PORT;
 app.use(express.json());
 app.use('/', loginRouter);
+// app.use('/postjob')
+
+
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, ).then(() => {
@@ -30,16 +33,6 @@ mongoose.connect(process.env.MONGO_URI, ).then(() => {
 }).catch((err) => {
     console.error('MongoDB connection error:', err);
 });
-
-
-
-
-
-
-
-
-
-
 
 // Start Server
 app.listen(PORT, () => {

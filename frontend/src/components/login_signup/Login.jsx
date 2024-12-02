@@ -16,15 +16,25 @@ export default function Login() {
       });
 
       const data = await response.json();
+
       if (response.ok) {
-        window.location.href = "/findjob"; // Redirect to dashboard after login
+        
+        document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict`;
+
+        console.log("Login successful!");
+       
+        window.location.href = "/dashboard/findjob";
       } else {
-        alert(data.message);
+        console.error(data.message);
+        alert(data.message); 
       }
     } catch (error) {
-      console.log("Error:", error);
+      console.error("Error:", error.message);
+      alert("An error occurred during login. Please try again.");
     }
   };
+
+
 
   return (
     <div className="h-screen flex justify-center items-center flex-col gap-[3%] bg-black">
