@@ -7,6 +7,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 
 const loginRouter = require('./routes/auth');
+const jobRouter = require('./routes/joblist');
 dotenv.config(); 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
@@ -23,7 +24,7 @@ const protect = require('./middleware/authmiddleware');
 const PORT = process.env.PORT;
 app.use(express.json());
 app.use('/', loginRouter);
-// app.use('/postjob')
+app.use('/dashboard', jobRouter);
 
 
 

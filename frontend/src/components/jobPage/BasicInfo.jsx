@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-export default function BasicInfo({ role, location, salary }) {
+export default function BasicInfo({ name , deadline, salary }) {
   return (
     <div className="basicinfo h-[50vh] bg-black flex items-center flex-col gap-6 pt-11 relative">
-      <h1 className='text-white text-5xl font-bold'>{role}</h1>
+      <h1 className='text-white text-5xl font-bold'>{name}</h1>
       <div className='innerbasic flex justify-center gap-12'>
         {/* Display location dynamically */}
         <div className='location flex gap-2 items-center'>
           <img src="./locationIcon.png" alt="Location Icon" className="h-9 w-9 rounded-full bg-white" />
-          <p className='text-white'>{location}</p> {/* Dynamically displaying location */}
+          <p className='text-white'>{deadline}</p> {/* Dynamically displaying location */}
         </div>
 
         {/* Display salary dynamically */}

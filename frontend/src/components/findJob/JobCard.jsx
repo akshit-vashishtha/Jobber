@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function JobCard({ role, organisation, location, jobType, salary, tags }) {
+export default function JobCard({ name, description, deadline, jobType, salary, tags }) {
   return (
     <div className="w-[100%] h-[35vh] pl-4 pt-2 pr-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
       {/* Company Logo */}
@@ -12,15 +12,15 @@ export default function JobCard({ role, organisation, location, jobType, salary,
           className="h-12 w-12 rounded-full border border-gray-300"
         />
         <div className="ml-3">
-          <h3 className="text-lg font-semibold text-gray-800">{role}</h3>
-          <p className="text-sm text-gray-500">{organisation}</p>
+          <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+          <p className="text-sm text-gray-500">{description}</p>
         </div>
       </div>
 
       {/* Job Details */}
       <div className="mb-4">
         <p className="text-sm text-gray-600">
-          Location: <span className="font-medium">{location}</span>
+          Deadline: <span className="font-medium">{deadline}</span>
         </p>
         <p className="text-sm text-gray-600">
           Job Type: <span className="font-medium">{jobType}</span>
@@ -42,7 +42,7 @@ export default function JobCard({ role, organisation, location, jobType, salary,
       {/* Action Button */}
       <div className="flex justify-self-end">
         {/* Pass props using the state */}
-        <Link to="/dashboard/jobpage" state={{ role, location, salary }}>
+        <Link to="/dashboard/jobpage" state={{ name, deadline, salary }}>
           <button
             className="px-4 py-2 bg-slate-500 text-white rounded-3xl text-sm font-medium hover:bg-black hover:text-white transition-colors"
           >

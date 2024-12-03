@@ -1,6 +1,43 @@
-import React from "react";
+import React ,{useRef} from "react";
 
 export default function PostJob() {
+      
+  const jobname = useRef();
+  const jobdescription = useRef();
+  const jobcategory = useRef();
+  const jobskills = useRef();
+  const jobbudget = useRef();
+  const jobdeadline = useRef();
+  const HandleSubmit = async (e)=>{
+    e.preventDefault();
+    const FormData = {
+      name: jobname.current.value,
+      description: jobdescription.current.value,
+      category: jobcategory.current.value,
+      skills: jobskills.current.value,
+      budget: jobbudget.current.value,
+      deadline: jobdeadline.current.value,
+    }
+    try {
+      const response = await fetch("http://localhost:8000/dashboard/postjob", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(FormData),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Job Possted Succefully");
+      } else {
+        alert("Failed to post job" + data.message);
+      }
+    } catch (error) {
+      console.error("Error posting job:", error);
+      alert("An error occurred while posting the job.");
+    }
+
+  }
   return (
     <div className="postjob h-screen flex justify-center items-center bg-gray-100">
       <div
@@ -15,6 +52,7 @@ export default function PostJob() {
           <input
             type="text"
             name="jobname"
+            ref={jobname}
             placeholder="Enter job title"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
@@ -25,6 +63,7 @@ export default function PostJob() {
           <h2 className="text-xl mb-2">Job Description</h2>
           <textarea
             name="jobdescription"
+            ref={jobdescription}
             placeholder="Describe the job in detail"
             className="w-full h-[150px] p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           ></textarea>
@@ -35,6 +74,7 @@ export default function PostJob() {
           <h2 className="text-xl mb-2">Category</h2>
           <select
             name="category"
+            ref={jobcategory}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             <option value="">Select a category</option>
@@ -51,6 +91,7 @@ export default function PostJob() {
           <input
             type="text"
             name="skills"
+            ref={jobskills}
             placeholder="e.g., React, Node.js, SEO"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
@@ -60,16 +101,17 @@ export default function PostJob() {
         <div className="mb-4">
           <h2 className="text-xl mb-2">Budget</h2>
           <div className="flex gap-4">
-            <select
+            {/* <select
               name="budgetType"
               className="w-1/3 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             >
               <option value="fixed">Fixed Price</option>
               <option value="hourly">Hourly Rate</option>
-            </select>
+            </select> */}
             <input
               type="number"
               name="budget"
+              ref={jobbudget}
               placeholder="Enter amount"
               className="w-2/3 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
@@ -82,6 +124,7 @@ export default function PostJob() {
           <input
             type="date"
             name="deadline"
+            ref={jobdeadline}
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           />
         </div>
@@ -93,6 +136,7 @@ export default function PostJob() {
         <div className="text-center">
           <button
             type="submit"
+            onClick={HandleSubmit}
             className="px-6 py-3 bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400"
           >
             Post Job
