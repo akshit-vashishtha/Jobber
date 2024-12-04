@@ -19,14 +19,12 @@ const corsOptions = {
 };
 const protect = require('./middleware/authmiddleware');
 
-//use protect method on dashboard 
 
 const PORT = process.env.PORT;
 app.use(express.json());
 app.use('/', loginRouter);
-app.use('/dashboard', jobRouter);
 
-
+app.use('/dashboard',protect, jobRouter);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, ).then(() => {

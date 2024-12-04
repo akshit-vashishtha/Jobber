@@ -2,11 +2,12 @@ const joblist = require('../models/joblist');
 
 async function HandlePostJob(req, res) {
     console.log(req.body);
-    const { name, description, category, skills,budget,  deadline } = req.body;
-    if (!name || !description || !category || !skills || !deadline || !budget) {
+    const { name, description, category, skills, budget, deadline, } = req.body;
+    
+    if (!name || !description || !category || !skills || !deadline || !budget ) {
         return res.status(400).json({ message: "All Fields Are Required" });
     }
-
+    console.log(req.user);
     try {
         const job = new joblist({
             name,
@@ -15,6 +16,7 @@ async function HandlePostJob(req, res) {
             skills,
             budget,
             deadline,
+            userId : req.user,
         });
 
         await job.save();

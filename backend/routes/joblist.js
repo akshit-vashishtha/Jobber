@@ -6,4 +6,5 @@ const router = express.Router();
 
 router.post('/postjob', HandlePostJob);
 router.get('/findjob', HandleGetJob);
+
 module.exports = router;
