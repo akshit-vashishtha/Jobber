@@ -1,26 +1,31 @@
-import React from 'react'
-import Card from './Card'
-import { useState } from 'react';
+import React, { useState } from 'react';
+import AppliedSection from './AppliedSection';
+import PostedSection from './PostedSection';
+
 export default function CardSection() {
-    const [check,setCheck]=useState("applied");
+    const [check, setCheck] = useState("applied");
 
-  return (
-    <div className='w-[97%] bg-gray-300 rounded-2xl flex justify-self-center ml-[1.5%] items-center gap-10 pt-5 pl-5'>
-        <button className='h-[5vh] w-[10%] bg-black text-white rounded-full' onClick={()=>setCheck("applied")}>
-            Applied
-        </button>
-        <button className='h-[5vh] w-[10%] bg-black text-white rounded-full' onClick={()=>setCheck("posted")}>
-            Posted
-        </button>
+    return (
+        <div className='w-[97%] bg-gray-100 rounded-2xl flex-col ml-[1.5%] shadow-lg'>
+            <div className='buttons flex gap-5 m-[2.5%]'>
+                <button
+                    className='px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300'
+                    onClick={() => setCheck("applied")}
+                >
+                    Applied
+                </button>
+                <button
+                    className='px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition-all duration-300'
+                    onClick={() => setCheck("posted")}
+                >
+                    Posted
+                </button>
+            </div>
 
-        <div className="w-full flex flex-wrap gap-4 mt-5">
-        {Array(4)
-          .fill(0)
-          .map((_, index) => (
-            <Card info={check} />
-          ))}
-      </div>
-
-    </div>
-  )
+            <div className='p-4'>
+                {check === 'applied' && <AppliedSection />}
+                {check === 'posted' && <PostedSection />}
+            </div>
+        </div>
+    );
 }
