@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -17,10 +18,14 @@ export default function Login() {
 
       const data = await response.json();
 
+      console.log(data);
+
       if (response.ok) {
         
-        document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict`;
+        // document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict`;
 
+
+        Cookies.set("token", data.token);
         console.log("Login successful!");
        
         window.location.href = "/dashboard/findjob";

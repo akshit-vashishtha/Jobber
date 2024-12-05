@@ -1,5 +1,5 @@
 import React ,{useRef} from "react";
-
+import Cookies from "js-cookie";
 export default function PostJob() {
       
   const jobname = useRef();
@@ -23,6 +23,7 @@ export default function PostJob() {
         method: "POST",
         headers: {
           "Content-type": "application/json",
+          token: Cookies.get("token"),
         },
         body: JSON.stringify(FormData),
       });

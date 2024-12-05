@@ -1,12 +1,13 @@
 const joblist = require('../models/joblist');
-
+const JobMapping = require('../models/jobmapping');
 async function HandlePostJob(req, res) {
     console.log(req.body);
-    const { name, description, category, skills,budget,  deadline } = req.body;
-    if (!name || !description || !category || !skills || !deadline || !budget) {
+    const { name, description, category, skills, budget, deadline, } = req.body;
+    
+    if (!name || !description || !category || !skills || !deadline || !budget ) {
         return res.status(400).json({ message: "All Fields Are Required" });
     }
-
+    console.log(req.user);
     try {
         const job = new joblist({
             name,
@@ -15,9 +16,23 @@ async function HandlePostJob(req, res) {
             skills,
             budget,
             deadline,
+            userId : req.user,
         });
-
+        const userId = req.user;
+        const jobId = job._id;
         await job.save();
+        const jobMapping = await JobMapping.findOne({ userId });
+        if (jobMapping) {
+            jobMapping.posted.push(jobId);
+            await jobMapping.save();
+        } else {
+            const newJobMapping = new JobMapping({
+                userId,
+                applied: [],
+                posted: [jobId],
+            });
+            await newJobMapping.save();
+        }
 
         res.status(201).json({ message: "job posted succefully" });
     } catch (error) {
