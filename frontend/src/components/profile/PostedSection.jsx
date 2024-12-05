@@ -170,7 +170,7 @@ export default function PostedSection() {
             </div>
 
             {modalOpen && selectedJob && (
-                <div className="fixed top-10 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center overflow-hidden">
+                <div className="fixed top-10 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center overflow-hidden ">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-3/4 max-w-2xl max-h-[90vh] overflow-y-auto relative">
                         <button
                             className="absolute top-2 right-2 text-red-600 font-bold hover:text-red-800"

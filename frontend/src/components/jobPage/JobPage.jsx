@@ -15,7 +15,7 @@ export default function JobPage() {
   console.log('Location state in JobPage:', location.state); // Should print the state
 
   return (
-    <div className="h-screen w-[100%]">
+    <div className="w-[100%]">
       {/* Pass props to BasicInfo */}
       <BasicInfo name={name} location={jobLocation} salary={salary} />
       <DetailedInfo description={description} jobType={jobType} tags={tags}/>
