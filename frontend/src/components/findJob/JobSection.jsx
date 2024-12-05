@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import JobCard from './JobCard';
-import jobs from './jobs.json'; // Assuming jobs data is stored in jobs.json file
+import Cookies from "js-cookie";
 
 export default function JobSection() {
   const [jobs, setjobs] = useState([]);
@@ -9,7 +9,11 @@ export default function JobSection() {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const response = await fetch("http://localhost:8000/dashboard/findjob");
+        const response = await fetch("http://localhost:8000/dashboard/findjob", {
+          headers: {
+            token: Cookies.get("token")
+          }
+        });
         if (!response.ok) {
           throw new Error("failed to load data");
         }
@@ -37,6 +41,7 @@ export default function JobSection() {
       {jobs && jobs.map((job, index) => {
         return <JobCard
           key={index}
+          jobId={job._id}
           name={job.name}
           description={job.description}
           deadline={job.deadline}

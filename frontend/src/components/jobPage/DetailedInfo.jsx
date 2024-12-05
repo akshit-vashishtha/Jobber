@@ -2,14 +2,6 @@ import React from 'react';
 
 export default function DetailedInfo({description, jobType, tags}) {
   const jobDetails = {
-    description:
-      'We are looking for a skilled front-end developer to join our team and help build innovative user interfaces.',
-    responsibilities: [
-      'Develop and maintain front-end features.',
-      'Collaborate with designers and backend developers.',
-      'Ensure responsiveness and performance of web applications.',
-      'Write clean and reusable code.',
-    ],
     startDate: 'December 10, 2024',
     estimatedDelivery: '6 months',
   };

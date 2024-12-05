@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
-
-export default function BasicInfo({ name, location, salary }) {
+export default function BasicInfo({ jobId, name, location, salary }) {
+  console.log("BasicInfo" + jobId);
   const [applied, setApplied] = useState(false);
   const [modalToggle, setModalToggle] = useState(false);
   const [formData, setFormData] = useState({
+    jobId: jobId,
     fullName: "",
     email: "",
     phone: "",
     reason: "",
-    resume: null,
     additionalInfo: "",
   });
 
@@ -27,35 +28,58 @@ export default function BasicInfo({ name, location, salary }) {
     setErrors({}); // Reset errors on close
   };
 
+
+
   const handleInputChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: type === "file" ? files[0] : value,
+      [name]: value, // Update state with new value
     });
   };
 
   const validateForm = () => {
     const newErrors = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required.";
+    if (!formData.fullName.trim())
+      newErrors.fullName = "Full name is required.";
     if (!formData.email.trim()) newErrors.email = "Email is required.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       newErrors.email = "Enter a valid email.";
     if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
-    if (!formData.reason.trim())
-      newErrors.reason = "This field is mandatory.";
-    if (!formData.resume) newErrors.resume = "Resume attachment is required.";
+    if (!formData.reason.trim()) newErrors.reason = "This field is mandatory.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0; // Form is valid if no errors
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
     if (validateForm()) {
-      console.log("Form Data:", formData); // Handle submission logic here
-      setApplied(true);
-      closeModal();
+      try {
+        const response = await fetch("http://localhost:8000/dashboard/Apply", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: Cookies.get("token"),
+          },
+          body: JSON.stringify(formData), // Convert formData to JSON string
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          console.log("Success:", data);
+          setApplied(true); // Mark the job as applied
+          closeModal(); // Close the modal
+        } else {
+          const errorData = await response.json();
+          console.error("Error:", errorData);
+          alert(errorData.message || "Failed to submit application.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred while submitting the application.");
+      }
     }
   };
 
@@ -82,7 +106,7 @@ export default function BasicInfo({ name, location, salary }) {
           </div>
         </div>
         <div className="buttons flex gap-16">
-          <Link to="dashboard/findjob">
+          <Link to="/dashboard/findjob">
             <button className="bg-white text-black h-9 w-32 rounded-full hover:bg-gray-800 hover:text-white">
               See all jobs
             </button>
@@ -148,7 +172,9 @@ export default function BasicInfo({ name, location, salary }) {
                 )}
               </div>
               <div>
-                <label className="block text-gray-700">Why Should We Hire You?</label>
+                <label className="block text-gray-700">
+                  Why Should We Hire You?
+                </label>
                 <textarea
                   name="reason"
                   value={formData.reason}
@@ -160,19 +186,9 @@ export default function BasicInfo({ name, location, salary }) {
                 )}
               </div>
               <div>
-                <label className="block text-gray-700">Resume Attachment</label>
-                <input
-                  type="file"
-                  name="resume"
-                  onChange={handleInputChange}
-                  className="w-full border rounded px-3 py-2"
-                />
-                {errors.resume && (
-                  <p className="text-red-500 text-sm">{errors.resume}</p>
-                )}
-              </div>
-              <div>
-                <label className="block text-gray-700">Additional Info (Optional)</label>
+                <label className="block text-gray-700">
+                  Additional Info (Optional)
+                </label>
                 <textarea
                   name="additionalInfo"
                   value={formData.additionalInfo}
