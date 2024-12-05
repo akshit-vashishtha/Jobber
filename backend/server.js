@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const app = express();
-
+ 
 app.use(express.urlencoded({ extended: false }));
 
 const loginRouter = require('./routes/auth');
@@ -24,7 +24,7 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use('/', loginRouter);
 
-app.use('/dashboard',protect, jobRouter);
+app.use('/dashboard', protect, jobRouter);
 
 // Database Connection
 mongoose.connect(process.env.MONGO_URI, ).then(() => {
