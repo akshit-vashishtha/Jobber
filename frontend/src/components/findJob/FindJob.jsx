@@ -4,7 +4,7 @@ import JobSection from './JobSection'
 import Footer from '../Footer'
 export default function FindJob() {
   return (
-    <div className='h-screen mt-4 ml-8 mr-8'>
+    <div className='h-screen mt-[1%] ml-[2%] mr-[2%]'>
         <div className=''>
             <h1 className='text-6xl'>Find Your Ideal Job!</h1>
         </div>
