@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function DetailedInfo() {
+export default function DetailedInfo({description, jobType, tags}) {
   const jobDetails = {
     description:
       'We are looking for a skilled front-end developer to join our team and help build innovative user interfaces.',
@@ -21,14 +21,14 @@ export default function DetailedInfo() {
         {/* Job Description */}
         <section className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Description</h2>
-          <p className="text-gray-700">{jobDetails.description}</p>
+          <p className="text-gray-700">{description}</p>
         </section>
 
         {/* Key Responsibilities */}
         <section className="mb-6">
           <h2 className="text-xl font-semibold mb-2">Key Responsibilities</h2>
           <ul className="list-disc list-inside text-gray-700">
-            {jobDetails.responsibilities.map((item, index) => (
+            {tags.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
