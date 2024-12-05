@@ -1,29 +1,203 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-export default function BasicInfo({ role, location, salary }) {
-  return (
-    <div className="basicinfo h-[50vh] bg-black flex items-center flex-col gap-6 pt-11 relative">
-      <h1 className='text-white text-5xl font-bold'>{role}</h1>
-      <div className='innerbasic flex justify-center gap-12'>
-        {/* Display location dynamically */}
-        <div className='location flex gap-2 items-center'>
-          <img src="./locationIcon.png" alt="Location Icon" className="h-9 w-9 rounded-full bg-white" />
-          <p className='text-white'>{location}</p> {/* Dynamically displaying location */}
-        </div>
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-        {/* Display salary dynamically */}
-        <div className='location flex gap-2 items-center'>
-          <img src="./moneyIcon.jpg" alt="Money Icon" className="h-9 w-9 rounded-full bg-black border-none" />
-          <p className='text-white'>{salary}</p> {/* Dynamically displaying salary */}
+export default function BasicInfo({ role, location, salary }) {
+  const [applied, setApplied] = useState(false);
+  const [modalToggle, setModalToggle] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    reason: "",
+    resume: null,
+    additionalInfo: "",
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleCLick = () => {
+    if (!applied) {
+      setModalToggle(true);
+    }
+  };
+
+  const closeModal = () => {
+    setModalToggle(false);
+    setErrors({}); // Reset errors on close
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value, type, files } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "file" ? files[0] : value,
+    });
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.fullName.trim()) newErrors.fullName = "Full name is required.";
+    if (!formData.email.trim()) newErrors.email = "Email is required.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Enter a valid email.";
+    if (!formData.phone.trim()) newErrors.phone = "Phone number is required.";
+    if (!formData.reason.trim())
+      newErrors.reason = "This field is mandatory.";
+    if (!formData.resume) newErrors.resume = "Resume attachment is required.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0; // Form is valid if no errors
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      console.log("Form Data:", formData); // Handle submission logic here
+      setApplied(true);
+      closeModal();
+    }
+  };
+
+  return (
+    <>
+      <div className="basicinfo h-[50vh] bg-black flex items-center flex-col gap-6 pt-11 relative">
+        <h1 className="text-white text-5xl font-bold">{role}</h1>
+        <div className="innerbasic flex justify-center gap-12">
+          <div className="location flex gap-2 items-center">
+            <img
+              src="/locationIcon.png"
+              alt="Location Icon"
+              className="h-9 w-9 rounded-full bg-white"
+            />
+            <p className="text-white">{location}</p>
+          </div>
+          <div className="location flex gap-2 items-center">
+            <img
+              src="/moneyIcon.jpg"
+              alt="Money Icon"
+              className="h-9 w-9 rounded-full bg-black border-none"
+            />
+            <p className="text-white">{salary}</p>
+          </div>
+        </div>
+        <div className="buttons flex gap-16">
+          <Link to="dashboard/findjob">
+            <button className="bg-white text-black h-9 w-32 rounded-full hover:bg-gray-800 hover:text-white">
+              See all jobs
+            </button>
+          </Link>
+          <button
+            className="bg-green-400 text-black h-9 w-32 rounded-full hover:bg-green-500"
+            onClick={handleCLick}
+          >
+            {applied ? "Applied!" : "Apply Now"}
+          </button>
         </div>
       </div>
-      <div className='buttons flex gap-16'>
-        <Link to="dashboard/findjob">
-        <button className='bg-white text-black h-9 w-32 rounded-full hover:bg-gray-800 hover:text-white'>See all jobs</button>
-        </Link>
-        
-        <button className='bg-green-400 text-black h-9 w-32 rounded-full hover:bg-green-500'>Apply now</button>
-      </div>
-    </div>
+
+      {/* Modal */}
+      {modalToggle && (
+        <div
+          className="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={closeModal}
+        >
+          <div
+            className="bg-white w-[80%] max-w-lg rounded-2xl p-6"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-black text-2xl font-bold mb-4">Apply</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-gray-700">Full Name</label>
+                <input
+                  type="text"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleInputChange}
+                  className="w-full border rounded px-3 py-2"
+                />
+                {errors.fullName && (
+                  <p className="text-red-500 text-sm">{errors.fullName}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="w-full border rounded px-3 py-2"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm">{errors.email}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700">Phone No</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full border rounded px-3 py-2"
+                />
+                {errors.phone && (
+                  <p className="text-red-500 text-sm">{errors.phone}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700">Why Should We Hire You?</label>
+                <textarea
+                  name="reason"
+                  value={formData.reason}
+                  onChange={handleInputChange}
+                  className="w-full border rounded px-3 py-2"
+                ></textarea>
+                {errors.reason && (
+                  <p className="text-red-500 text-sm">{errors.reason}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700">Resume Attachment</label>
+                <input
+                  type="file"
+                  name="resume"
+                  onChange={handleInputChange}
+                  className="w-full border rounded px-3 py-2"
+                />
+                {errors.resume && (
+                  <p className="text-red-500 text-sm">{errors.resume}</p>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700">Additional Info (Optional)</label>
+                <textarea
+                  name="additionalInfo"
+                  value={formData.additionalInfo}
+                  onChange={handleInputChange}
+                  className="w-full border rounded px-3 py-2"
+                ></textarea>
+              </div>
+              <div className="flex justify-end space-x-4">
+                <button
+                  type="button"
+                  className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
