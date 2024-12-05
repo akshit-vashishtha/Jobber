@@ -82,7 +82,7 @@ export default function BasicInfo({ name, location, salary }) {
           </div>
         </div>
         <div className="buttons flex gap-16">
-          <Link to="dashboard/findjob">
+          <Link to="/dashboard/findjob">
             <button className="bg-white text-black h-9 w-32 rounded-full hover:bg-gray-800 hover:text-white">
               See all jobs
             </button>
