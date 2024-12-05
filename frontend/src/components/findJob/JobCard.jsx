@@ -42,7 +42,7 @@ export default function JobCard({ name, description, deadline, jobType, salary, 
       {/* Action Button */}
       <div className="flex justify-self-end">
         {/* Pass props using the state */}
-        <Link to="/dashboard/jobpage" state={{ name, deadline, salary }}>
+        <Link to="/dashboard/jobpage" state={{ name, deadline, salary, description, jobType, tags }}>
           <button
             className="px-4 py-2 bg-slate-500 text-white rounded-3xl text-sm font-medium hover:bg-black hover:text-white transition-colors"
           >
