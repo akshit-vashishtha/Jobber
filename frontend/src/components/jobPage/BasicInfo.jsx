@@ -85,7 +85,7 @@ export default function BasicInfo({ jobId, name, location, salary }) {
 
   return (
     <>
-      <div className="basicinfo h-[50vh] bg-black flex items-center flex-col gap-6 pt-11 relative">
+      <div className="basicinfo p-12 bg-black flex items-center flex-col gap-6 pt-11 sm:p-20 md:p-16">
         <h1 className="text-white text-5xl font-bold">{name}</h1>
         <div className="innerbasic flex justify-center gap-12">
           <div className="location flex gap-2 items-center">

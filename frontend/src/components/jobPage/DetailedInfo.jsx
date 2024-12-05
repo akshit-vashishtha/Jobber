@@ -7,7 +7,7 @@ export default function DetailedInfo({description, jobType, tags}) {
   };
 
   return (
-    <div className="absolute top-[45%] left-0 w-[70%] p-6 bg-gray-300 rounded-lg shadow-md z-10 ml-[15%]">
+    <div className="top-[45%] left-0 w-[90%] p-6 bg-gray-300 rounded-lg ml-[5%] shadow-md z-10 sm:top-[50%] md:top-[47%]">
         <h1 className="text-2xl font-bold mb-4">Job Details</h1>
 
         {/* Job Description */}
