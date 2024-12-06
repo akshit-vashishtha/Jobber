@@ -15,7 +15,7 @@ export default function Signup() {
         },
         body: JSON.stringify({ name, email, password }),
       });
-
+      
       const data = await response.json();
       if (response.ok) {
         alert("Signup successful!");

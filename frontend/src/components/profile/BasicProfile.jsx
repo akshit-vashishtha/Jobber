@@ -1,7 +1,7 @@
 import React from 'react'
-
+import Cookies from "js-cookie";
 export default function BasicProfile() {
-    let userName = "akshit vashishtha";
+    let userName = Cookies.get("name");
     let userDescription = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio, in rerum? Magni distinctio, voluptates perferendis aperiam adipisci modi veniam consequuntur nesciunt deserunt sunt error vel delectus a excepturi. Eius, aperiam."
 
     return (
