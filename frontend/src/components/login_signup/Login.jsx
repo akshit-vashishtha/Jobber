@@ -44,7 +44,7 @@ export default function Login() {
   return (
     <div className="h-screen flex justify-center items-center flex-col gap-[3%] bg-black">
       <div
-        className="bg-cover bg-center relative h-[70%] w-[90%] rounded-2xl overflow-hidden shadow-lg sm:w-[70%] md:w-[50%] lg:w-[35%]"
+        className="bg-cover bg-center relative h-[75%] w-[90%] rounded-2xl overflow-hidden shadow-lg sm:w-[70%] md:w-[50%] lg:w-[35%]"
         style={{ backgroundImage: "url(/loginbg.avif)" }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-center items-center">
