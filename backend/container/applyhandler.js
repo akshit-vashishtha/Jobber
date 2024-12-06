@@ -1,7 +1,7 @@
 const Application = require('../models/applicationschema'); // Application Schema
 const JobMapping = require('../models/jobmapping'); // Job Mapping Schema
 const Joblists = require('../models/joblist');// Job list Schema
-
+   
 
 async function applyhandler(req, res) {
     try {

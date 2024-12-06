@@ -26,6 +26,7 @@ export default function Login() {
 
 
         Cookies.set("token", data.token);
+        Cookies.set("name", data.user.name);
         console.log("Login successful!");
        
         window.location.href = "/dashboard/findjob";

@@ -37,7 +37,8 @@ async function getprofileHandler(req, res) {
 }
 async function setstatusHandler(req, res) {
     const { applicationId } = req.params; 
-    const { selected } = req.body; 
+    const { status } = req.body;
+    console.log(req.body);
     try {
         const application = await Application.findById(applicationId);
 
@@ -45,7 +46,7 @@ async function setstatusHandler(req, res) {
             return res.status(404).json({ message: 'Application not found' });
         }
 
-        if (selected) {
+        if (status) {
             application.status = "selected";
         } else {
             application.status = "rejected";
