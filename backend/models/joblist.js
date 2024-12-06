@@ -17,7 +17,7 @@ const JobListSchema = new mongoose.Schema({
         required: true,
     },
     skills: {
-        type: [String], 
+        type: [String],
         required: true,
     },
     budget: {
@@ -26,7 +26,7 @@ const JobListSchema = new mongoose.Schema({
         min: 0,
     },
     deadline: {
-        type: Date, 
+        type: Date,
         required: true,
     },
     userId: {
@@ -34,6 +34,12 @@ const JobListSchema = new mongoose.Schema({
         ref: 'User',
         required: true,
     },
-    }, { timestamps: true }); 
+    applications: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Application',
+        }
+    ],
+}, { timestamps: true });
 
 module.exports = mongoose.model('JobList', JobListSchema);

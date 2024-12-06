@@ -1,7 +1,8 @@
 import React ,{useRef} from "react";
 import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 export default function PostJob() {
-      
+  const navigate = useNavigate();
   const jobname = useRef();
   const jobdescription = useRef();
   const jobcategory = useRef();
@@ -29,6 +30,7 @@ export default function PostJob() {
       });
       const data = await response.json();
       if (response.ok) {
+        navigate('/dashboard/findjob');
         console.log("Job Possted Succefully");
       } else {
         alert("Failed to post job" + data.message);

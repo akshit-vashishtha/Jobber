@@ -45,7 +45,7 @@ async function HandleGetJob(req, res) {
     try {
         const job = await joblist.find();
         if (job.length === 0) {
-            return res.status(404).json({ message: 'no job found' });
+            return res.status(204).json({ message: 'no job active' });
         }
 
         res.status(200).json({ job });
