@@ -1,45 +1,64 @@
-import React, { useEffect, useState } from 'react';
-import JobCard from './JobCard';
+import React, { useEffect, useState } from "react";
+import JobCard from "./JobCard";
 import Cookies from "js-cookie";
 
 export default function JobSection() {
-  const [jobs, setjobs] = useState([]);
-  const [loading, setloading] = useState(true);
-  const [error, seterror] = useState(null);
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(() => {
-    const fetchdata = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/dashboard/findjob", {
-          headers: {
-            token: Cookies.get("token")
+        const response = await fetch(
+          "http://localhost:8000/dashboard/findjob",
+          {
+            headers: {
+              token: Cookies.get("token"),
+            },
           }
-        });
+        );
+
         if (!response.ok) {
-          throw new Error("failed to load data");
+          throw new Error("Failed to load data");
         }
-        const data = await response.json();
-        setjobs(data.job);
+        const text = await response.text(); // Read the body as text
+        if (!text) {
+          throw new Error("No active jobs");
+        }
+
+        const data = JSON.parse(text); // Parse the response as JSON
+
+        setJobs(data.job || []); // Ensure `data.job` is an array, otherwise default to empty array
       } catch (error) {
-        seterror(error);
+        setError(error.message || "An error occurred"); // Extract error message if it's available
       } finally {
-        setloading(false);
+        setLoading(false);
       }
     };
-    fetchdata();
+
+    fetchData();
   }, []);
-  console.log(jobs);
+
+  // Logging jobs to check if data is being fetched properly
+  console.log("Jobs:", jobs);
+
   if (loading) {
     return <div className="text-center text-gray-600">Loading jobs...</div>;
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error: {error}</div>;
+    return <div className="text-center text-red-500">{error}</div>;
+  }
+
+  if (jobs.length === 0) {
+    return <div className="text-center text-gray-600">No active jobs</div>;
   }
 
   return (
     <div className="h-[100%] flex flex-wrap gap-4 justify-center items-center">
-      {jobs && jobs.map((job, index) => {
-        return <JobCard
+      {jobs.map((job, index) => (
+        <JobCard
           key={index}
           jobId={job._id}
           name={job.name}
@@ -49,7 +68,7 @@ export default function JobSection() {
           salary={job.budget}
           tags={job.skills}
         />
-      })}
+      ))}
     </div>
   );
 }

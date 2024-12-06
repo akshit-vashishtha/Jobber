@@ -39,13 +39,7 @@ router.post('/login', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
 
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.cookie('token', token, {
-            httpOnly: true, // Prevents JavaScript from accessing the token
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: 'strict', // Prevents CSRF attacks
-            maxAge: 3600000, // 1 hour
-        });
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '7d' });
         res.status(200).json({ token, message: 'Login successful' });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });

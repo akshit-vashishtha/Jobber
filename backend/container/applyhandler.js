@@ -1,5 +1,6 @@
-const JobList = require('../models/applicationschema'); // Application Schema
+const Application = require('../models/applicationschema'); // Application Schema
 const JobMapping = require('../models/jobmapping'); // Job Mapping Schema
+const Joblists = require('../models/joblist');// Job list Schema
 
 
 async function applyhandler(req, res) {
@@ -10,7 +11,7 @@ async function applyhandler(req, res) {
         }
         console.log(req.body);
         const userId = req.user;
-        const newApplication = new JobList({
+        const newApplication = new Application({
             jobId,
             userId,
             fullName,
@@ -34,7 +35,13 @@ async function applyhandler(req, res) {
             });
             await newJobMapping.save();
         }
-
+        const Joblist = await Joblists.findById(jobId);
+        if (!Joblist) {
+            return res.status(404).json({ error: 'Job not found.' });
+        } else {
+            Joblist.applications.push(newApplication._id);
+        }
+        await Joblist.save();
         return res.status(200).json({ message: 'Application submitted successfully!' });
     } catch (error) {
         console.error('Error handling job application:', error);
