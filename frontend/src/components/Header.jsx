@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
 export default function Header() {
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
   const dropdownRef = useRef(null);
@@ -21,6 +23,12 @@ export default function Header() {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const navigate = useNavigate();
+
+  const handlelogout = () => {
+    Cookies.remove("token");
+    navigate("/");
+  }
 
   return (
     <>
@@ -82,12 +90,12 @@ export default function Header() {
                 </Link>
                   
                   <li>
-                    <a
-                      href="#"
+                    <button
+                      onClick={()=>handlelogout()}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
                     >
                       Logout
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </div>
