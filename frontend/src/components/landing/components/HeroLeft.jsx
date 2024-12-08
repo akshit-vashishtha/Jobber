@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export default function HeroLeft() {
   return (
-    <div className="h-screen w-full flex flex-col justify-center items-start p-10 ">
+    <div className="w-full flex flex-col justify-center items-start p-10 ">
       {/* Heading */}
       <div className="heading mb-8">
         <h1 className="text-white text-6xl font-semibold leading-tight">

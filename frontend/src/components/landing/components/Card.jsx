@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 export default function Card({ heading, tagline, buttonLabel, type }) {
   return (
-    <div className="h-[30%] w-[60%] bg-black rounded-2xl shadow-xl p-6 flex flex-col justify-between items-center border border-gray-300 transform transition-transform duration-500 hover:scale-105 hover:animate-tilt border-none">
+    <div className="p-[8%] w-[80%] bg-black rounded-2xl shadow-xl flex flex-col justify-between items-center border border-gray-300 transform transition-transform duration-500 hover:scale-105 hover:animate-tilt border-none">
       <div className="text-center">
         <h1 className="text-4xl font-semibold text-white mb-4">{heading}</h1>
         <p className="text-md text-gray-300">{tagline}</p>
