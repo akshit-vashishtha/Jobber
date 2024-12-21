@@ -64,22 +64,23 @@ export default function PostedSection({ jobs }) {
 
   return (
     <div className="w-[98%] rounded-2xl p-4 flex justify-self-center justify-center mb-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3.5%] w-full">
         {jobs && jobs.length > 0 ? (
           jobs.map((job, index) => (
             <div
-              key={job._id} // Using job._id instead of index to ensure uniqueness
-              className="bg-white p-4 rounded-lg shadow-md cursor-pointer hover:shadow-lg hover:bg-gray-50 w-full"
-              onClick={() => handleJobClick(job)}
-            >
-              <h2 className="text-lg font-bold text-black">{job.name}</h2>
-              <p className="text-sm text-gray-600">
-                Posted on: {job.createdAt}
-              </p>
-              <p className="text-sm text-gray-700">
-                {job.applications.length} Applicants
-              </p>
-            </div>
+  key={job._id} // Using job._id to ensure uniqueness
+  className="bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg hover:bg-gray-50 w-full border border-gray-200"
+  onClick={() => handleJobClick(job)}
+>
+  <h2 className="text-xl font-semibold text-gray-800 mb-2">{job.name}</h2>
+  <p className="text-sm text-gray-600 mb-1">
+    <span className="font-medium">Posted on:</span> {new Date(job.createdAt).toLocaleDateString()}
+  </p>
+  <p className="text-sm font-medium text-gray-700">
+    {job.applications.length} {job.applications.length === 1 ? "Applicant" : "Applicants"}
+  </p>
+</div>
+
           ))
         ) : (
           <div className="text-center text-gray-600">No jobs posted yet.</div>
