@@ -25,12 +25,12 @@ async function applyhandler(req, res) {
 
         const jobMapping = await JobMapping.findOne({ userId });
         if (jobMapping) {
-            jobMapping.applied.push(jobId);
+            jobMapping.applied.push(newApplication._id);
             await jobMapping.save();
         } else {
             const newJobMapping = new JobMapping({
                 userId,
-                applied: [jobId],
+                applied: [newApplication._id],
                 posted: [],
             });
             await newJobMapping.save();
