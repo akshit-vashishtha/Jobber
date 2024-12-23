@@ -10,7 +10,7 @@ const JobMappingSchema = new mongoose.Schema({
     applied: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'JobList', 
+            ref: 'Application', 
         },
     ],
     posted: [
