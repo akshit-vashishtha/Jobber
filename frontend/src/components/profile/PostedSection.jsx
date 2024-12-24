@@ -161,19 +161,19 @@ export default function PostedSection({ jobs }) {
             </div>
 
             {/* Action Buttons for Pending Applicants */}
-            {applicant.status === "pending" && (
+            {applicant.status === "Pending" && (
               <div className="mt-4 flex gap-6 justify-end">
                 <button
                   className="bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow hover:bg-green-700 transition duration-200"
                   onClick={() => handleSelectionChange(index, true)}
-                  disabled={applicant.status !== "pending"}
+                  disabled={applicant.status !== "Pending"}
                 >
                   Select
                 </button>
                 <button
                   className="bg-red-600 text-white font-semibold py-2 px-6 rounded-lg shadow hover:bg-red-700 transition duration-200"
                   onClick={() => handleSelectionChange(index, false)}
-                  disabled={applicant.status !== "pending"}
+                  disabled={applicant.status !== "Pending"}
                 >
                   Reject
                 </button>
