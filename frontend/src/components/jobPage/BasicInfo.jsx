@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
-export default function BasicInfo({ jobId, name, location, salary }) {
+export default function BasicInfo({ jobId, name, location, salary, postedBy }) {
   console.log("BasicInfo" + jobId);
   const [applied, setApplied] = useState(false);
   const [modalToggle, setModalToggle] = useState(false);
@@ -17,6 +17,11 @@ export default function BasicInfo({ jobId, name, location, salary }) {
 
   const [errors, setErrors] = useState({});
 
+  // Assume `userId` is retrieved from cookies, local storage, or a context
+  const userId = Cookies.get("userId");
+
+  const isPoster = userId === postedBy; // Check if the user is the job poster
+
   const handleCLick = () => {
     if (!applied) {
       setModalToggle(true);
@@ -27,8 +32,6 @@ export default function BasicInfo({ jobId, name, location, salary }) {
     setModalToggle(false);
     setErrors({}); // Reset errors on close
   };
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -65,7 +68,7 @@ export default function BasicInfo({ jobId, name, location, salary }) {
           },
           body: JSON.stringify(formData), // Convert formData to JSON string
         });
-        
+
         if (response.ok) {
           const data = await response.json();
           console.log("Success:", data);
@@ -74,7 +77,7 @@ export default function BasicInfo({ jobId, name, location, salary }) {
         } else {
           const errorData = await response.json();
           console.error("Error:", errorData);
-          alert(errorData.message || "Failed to submit application.");
+          alert(errorData.error || "Failed to submit application.");
         }
       } catch (error) {
         console.error("Error:", error);
@@ -111,12 +114,22 @@ export default function BasicInfo({ jobId, name, location, salary }) {
               See all jobs
             </button>
           </Link>
-          <button
-            className="bg-green-400 text-black h-9 w-32 rounded-full hover:bg-green-500"
-            onClick={handleCLick}
-          >
-            {applied ? "Applied!" : "Apply Now"}
-          </button>
+          {isPoster ? (
+            <button
+              className="bg-gray-400 text-black h-9 w-32 rounded-full cursor-not-allowed"
+              disabled
+            >
+              Your Job
+            </button>
+          ) : (
+            <button
+              className="bg-green-400 text-black h-9 w-32 rounded-full hover:bg-green-500"
+              onClick={handleCLick}
+              disabled={applied}
+            >
+              {applied ? "Applied!" : "Apply Now"}
+            </button>
+          )}
         </div>
       </div>
 
