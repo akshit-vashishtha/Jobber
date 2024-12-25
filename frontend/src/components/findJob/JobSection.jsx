@@ -67,6 +67,7 @@ export default function JobSection() {
           jobType={job.category}
           salary={job.budget}
           tags={job.skills}
+          postedBy = {job.userId}
         />
       ))}
     </div>

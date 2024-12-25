@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function JobCard({ jobId, name, description, deadline, jobType, salary, tags }) {
-  console.log("jobcard"+jobId);
+export default function JobCard({ jobId, name, description, deadline, jobType, salary, tags, postedBy }) {
+
   return (
     <div className="w-[100%] pl-[1%] pt-[2%] pr-[1%] bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
       {/* Company Logo */}
@@ -43,7 +43,7 @@ export default function JobCard({ jobId, name, description, deadline, jobType, s
       {/* Action Button */}
       <div className="flex justify-self-end">
         {/* Pass props using the state */}
-        <Link to="/dashboard/jobpage" state={{jobId, name, deadline, salary, description, jobType, tags }}>
+        <Link to="/dashboard/jobpage" state={{jobId, name, deadline, salary, description, jobType, tags, postedBy }}>
           <button
             className="mb-4 p-2 bg-slate-500 text-white rounded-2xl text-sm font-medium hover:bg-black hover:text-white transition-colors"
           >

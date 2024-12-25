@@ -10,14 +10,14 @@ export default function JobPage() {
         console.log("JobPage component is mounted!");
       }, []);
   const location = useLocation();
-  const {jobId, name, location: jobLocation, salary, description, jobType, tags } = location.state || {};  // Destructure state
+  const {jobId, name, location: jobLocation, salary, description, jobType, tags ,postedBy} = location.state || {};  // Destructure state
 
   console.log('Location state in JobPage:', location.state); // Should print the state
 
   return (
     <div className="w-[100%]">
       {/* Pass props to BasicInfo */}
-      <BasicInfo jobId={jobId} name={name} location={jobLocation} salary={salary} />
+      <BasicInfo jobId={jobId} name={name} location={jobLocation} salary={salary} postedBy={postedBy} />
       <DetailedInfo description={description} jobType={jobType} tags={tags}/>
     </div>
   );

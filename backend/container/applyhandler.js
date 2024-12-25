@@ -9,8 +9,12 @@ async function applyhandler(req, res) {
         if (!jobId || !fullName || !email || !phone || !reason ) {
             return res.status(400).json({ error: 'All required fields must be filled.' });
         }
-        console.log(req.body);
+       
         const userId = req.user;
+        const existingApplication = await Application.findOne({ jobId, userId });
+        if (existingApplication) {
+            return res.status(400).json({ error: 'You have already applied for this job.' });
+        }
         const newApplication = new Application({
             jobId,
             userId,
