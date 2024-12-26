@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import Cookies from "js-cookie";
 
 export default function AppliedSection() {
   const [applications, setApplications] = useState([]);
   const [selectedApplication, setSelectedApplication] = useState(null); // For modal content
-  const navigate = useNavigate();
+ 
 
   useEffect(() => {
     // Fetch applications from the backend

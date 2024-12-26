@@ -7,7 +7,7 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 
 const loginRouter = require('./routes/auth');
-const jobRouter = require('./routes/joblist');
+const jobRouter = require('./routes/jobberoutes');
 dotenv.config(); 
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());

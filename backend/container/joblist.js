@@ -43,7 +43,7 @@ async function HandlePostJob(req, res) {
 }
 async function HandleGetJob(req, res) {
     try {
-        const job = await joblist.find();
+        const job = await joblist.find({active:true});
         if (job.length === 0) {
             return res.status(204).json({ message: 'no job active' });
         }

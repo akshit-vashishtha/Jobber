@@ -8,7 +8,7 @@ export default function CardSection() {
   const [posted, setPosted] = useState([]); // State to hold the posted jobs
   const [loading, setLoading] = useState(true); // State to track loading
   const [error, setError] = useState(null); // State to track error
-
+  const [jobtrigger, setjobtrigger] = useState(false);
   useEffect(() => {
     const fetchPostedJobs = async () => {
       if (check === "posted") {
@@ -38,7 +38,7 @@ export default function CardSection() {
     };
 
     fetchPostedJobs();
-  }, [check]); 
+  }, [check , jobtrigger]); 
 
   return (
     <div className="w-[97%] bg-gray-100 rounded-2xl flex-col ml-[1.5%] shadow-lg">
@@ -72,7 +72,7 @@ export default function CardSection() {
                 No posted jobs available.
               </div>
             ) : (
-              <PostedSection jobs={posted} /> // Pass the fetched posted jobs to PostedSection
+                    <PostedSection jobs={posted} setjobtrigger={setjobtrigger} /> // Pass the fetched posted jobs to PostedSection
             )}
           </>
         )}
