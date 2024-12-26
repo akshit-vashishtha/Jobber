@@ -40,6 +40,10 @@ const JobListSchema = new mongoose.Schema({
             ref: 'Application',
         }
     ],
+    active: {
+        type: Boolean,
+        default : true,
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('JobList', JobListSchema);
