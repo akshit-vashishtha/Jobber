@@ -87,7 +87,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
       alert("There was an error deleting the job.");
     }
   };
-
+//hey in this code you are working fine but in my other folder you are not why
   return (
     <div className="w-[98%] rounded-2xl p-4 flex justify-self-center justify-center mb-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3.5%] w-full">

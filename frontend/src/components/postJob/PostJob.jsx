@@ -33,7 +33,7 @@ export default function PostJob() {
         navigate('/dashboard/findjob');
         console.log("Job Possted Succefully");
       } else {
-        alert("Failed to post job" + data.message);
+        alert("Failed to post job " + data.message);
       }
     } catch (error) {
       console.error("Error posting job:", error);
