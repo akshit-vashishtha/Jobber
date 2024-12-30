@@ -6,7 +6,7 @@ export default function Landing() {
 
   return (
     <div className="h-screen bg-white">
-      <div className="hero h-screen">
+      <div className="hero">
         <Hero/>
       </div>
     </div>
