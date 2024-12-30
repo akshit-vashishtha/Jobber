@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import JobCard from "./JobCard";
 import Cookies from "js-cookie";
 
-export default function JobSection() {
+export default function JobSection({searchQuery}) {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -43,6 +43,10 @@ export default function JobSection() {
   // Logging jobs to check if data is being fetched properly
   console.log("Jobs:", jobs);
 
+  const filteredJobs = jobs.filter((job) =>
+    job.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   if (loading) {
     return <div className="text-center text-gray-600">Loading jobs...</div>;
   }
@@ -51,13 +55,13 @@ export default function JobSection() {
     return <div className="text-center text-red-500">{error}</div>;
   }
 
-  if (jobs.length === 0) {
+  if (filteredJobs.length === 0) {
     return <div className="text-center text-gray-600">No active jobs</div>;
   }
 
   return (
     <div className="h-[100%] flex flex-wrap gap-4 justify-center items-center">
-      {jobs.map((job, index) => (
+      {filteredJobs.map((job, index) => (
         <JobCard
           key={index}
           jobId={job._id}
