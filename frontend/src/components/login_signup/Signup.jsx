@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 export default function Signup() {
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -96,12 +96,12 @@ export default function Signup() {
                 <span className="text-white/60 text-sm mr-2">
                   Already a member?
                 </span>
-                <a 
-                  href="#" 
-                  className="text-white underline hover:text-white/80 transition-colors duration-300"
-                >
+                <Link
+                to="/login"
+                className="text-white underline hover:text-white/80 transition-colors duration-300">
                   Login
-                </a>
+                </Link>
+                  
               </div>
             </form>
           </div>

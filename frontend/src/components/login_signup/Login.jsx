@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
-
+import { Link } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -98,12 +98,11 @@ export default function Login() {
                 <span className="text-white/60 text-sm mr-2">
                   Not a member?
                 </span>
-                <a 
-                  href="#" 
-                  className="text-white underline hover:text-white/80 transition-colors duration-300"
-                >
+                <Link
+                to="/signup"
+                className="text-white underline hover:text-white/80 transition-colors duration-300">
                   Register
-                </a>
+                </Link>
               </div>
             </form>
           </div>
