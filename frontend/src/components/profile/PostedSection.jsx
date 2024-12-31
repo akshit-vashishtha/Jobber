@@ -21,7 +21,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
     console.log(applicant._id); // Debugging log to check the applicant's _id
     try {
       const response = await fetch(
-        `http://localhost:8000/dashboard/profile/${applicant._id}`,
+        `https://jobber-server.vercel.app/dashboard/profile/${applicant._id}`,
         {
           method: "PATCH",
           headers: {
@@ -65,7 +65,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
   const handleDeleteJob = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/dashboard//jobstatus/${selectedJob._id}`,
+        `https://jobber-server.vercel.app/dashboard//jobstatus/${selectedJob._id}`,
         {
           method: "POST",
           headers: {

@@ -9,7 +9,7 @@ export default function AppliedSection() {
 
   useEffect(() => {
     // Fetch applications from the backend
-    fetch("http://localhost:8000/dashboard/applied", {
+    fetch("https://jobber-server.vercel.app/dashboard/applied", {
       headers: {
         token: Cookies.get("token"),
       },

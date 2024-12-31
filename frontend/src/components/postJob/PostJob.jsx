@@ -20,7 +20,7 @@ export default function PostJob() {
       deadline: jobdeadline.current.value,
     }
     try {
-      const response = await fetch("http://localhost:8000/dashboard/postjob", {
+      const response = await fetch("https://jobber-server.vercel.app/dashboard/postjob", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

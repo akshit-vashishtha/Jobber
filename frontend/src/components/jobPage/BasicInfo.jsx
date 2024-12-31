@@ -60,7 +60,7 @@ export default function BasicInfo({ jobId, name, location, salary, postedBy }) {
     console.log(formData);
     if (validateForm()) {
       try {
-        const response = await fetch("http://localhost:8000/dashboard/Apply", {
+        const response = await fetch("https://jobber-server.vercel.app/dashboard/Apply", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

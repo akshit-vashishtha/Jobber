@@ -11,7 +11,7 @@ export default function JobSection({searchQuery}) {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/dashboard/findjob",
+          "https://jobber-server.vercel.app/dashboard/findjob",
           {
             headers: {
               token: Cookies.get("token"),
