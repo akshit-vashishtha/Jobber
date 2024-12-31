@@ -14,7 +14,7 @@ app.use(cookieParser());
 app.use(cors());
 
 const corsOptions = {
-    origin: 'http://localhost:5173', 
+    origin: 'https://jobber-ashy.vercel.app/', 
     credentials: true, 
 };
 const protect = require('./middleware/authmiddleware');

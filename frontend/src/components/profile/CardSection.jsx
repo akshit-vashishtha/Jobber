@@ -15,10 +15,10 @@ export default function CardSection() {
         try {
           setLoading(true);
           const response = await fetch(
-            "http://localhost:8000/dashboard/profile",
+            "https://jobber-eosin.vercel.app/dashboard/profile",
             {
               headers: {
-                token: Cookies.get("token"), 
+                token: Cookies.get("token"),
               },
             }
           );

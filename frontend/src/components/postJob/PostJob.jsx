@@ -20,14 +20,17 @@ export default function PostJob() {
       deadline: jobdeadline.current.value,
     }
     try {
-      const response = await fetch("http://localhost:8000/dashboard/postjob", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-          token: Cookies.get("token"),
-        },
-        body: JSON.stringify(FormData),
-      });
+      const response = await fetch(
+        "https://jobber-eosin.vercel.app/dashboard/postjob",
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            token: Cookies.get("token"),
+          },
+          body: JSON.stringify(FormData),
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         navigate('/dashboard/findjob');
