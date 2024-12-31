@@ -7,9 +7,9 @@ export default function FindJob() {
   const [searchQuery, setSearchQuery] = useState('');
   return (
     <div className='h-screen mt-[1%] ml-[2%] mr-[2%]'>
-        <div className=''>
+        {/* <div className=''>
             <h1 className='text-6xl'>Find Your Ideal Job!</h1>
-        </div>
+        </div> */}
         <div className='searchSection'>
             <SearchSection searchQuery={searchQuery} setSearchQuery={setSearchQuery}/>
         </div>
