@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();  // Use useNavigate hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,27 +23,22 @@ export default function Login() {
       console.log(data);
 
       if (response.ok) {
-        
-        // document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict`;
-
-
         Cookies.set("token", data.token);
         Cookies.set("name", data.user.name);
         Cookies.set("userId", data.user._id);
         console.log("Login successful!");
-       
-        window.location.href = "/dashboard/findjob";
+
+        // Use navigate instead of window.location.href
+        navigate("/dashboard/findjob");
       } else {
         console.error(data.message);
-        alert(data.message); 
+        alert(data.message);
       }
     } catch (error) {
       console.error("Error:", error.message);
       alert("An error occurred during login. Please try again.");
     }
   };
-
-
 
   return (
     <div className="h-screen flex justify-center items-center flex-col gap-[3%] bg-black">
