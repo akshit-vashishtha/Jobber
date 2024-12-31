@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import flowbitePlugin from 'flowbite/plugin';
+
 export default {
   content: [
     "./index.html",                        // Include your main HTML file
@@ -19,6 +21,6 @@ export default {
     },
   },
   plugins: [
-    require('flowbite/plugin'),            // Include Flowbite plugin
+    flowbitePlugin,            // Use Flowbite plugin
   ],
 };
