@@ -76,7 +76,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
 
       if (response.ok) {
         setConfirmDelete(false);
-        setjobtrigger((prev)=>!prev);
+        setjobtrigger((prev) => !prev);
       } else {
         const errorData = await response.json();
         console.error("Error:", errorData.message);

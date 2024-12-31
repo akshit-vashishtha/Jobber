@@ -18,7 +18,7 @@ export default function CardSection() {
             "https://jobber-server.vercel.app/dashboard/profile",
             {
               headers: {
-                token: Cookies.get("token"), 
+                token: Cookies.get("token"),
               },
             }
           );
