@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [name, setUsername] = useState("");
@@ -10,7 +10,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://jobber-eosin.vercel.app/signup", {
+      const response = await fetch("https://jobber-server.vercel.app/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,12 +98,12 @@ export default function Signup() {
                 <span className="text-white/60 text-sm mr-2">
                   Already a member?
                 </span>
-                <a 
-                  href="#" 
-                  className="text-white underline hover:text-white/80 transition-colors duration-300"
-                >
+                <Link
+                to="/login"
+                className="text-white underline hover:text-white/80 transition-colors duration-300">
                   Login
-                </a>
+                </Link>
+                  
               </div>
             </form>
           </div>

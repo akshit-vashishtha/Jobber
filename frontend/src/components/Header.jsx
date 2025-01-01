@@ -28,7 +28,7 @@ export default function Header() {
   const handlelogout = () => {
     Cookies.remove("token");
     navigate("/");
-  }
+  };
 
   return (
     <>
@@ -44,25 +44,41 @@ export default function Header() {
               className="h-8"
               alt="Jobber Logo"
             />
-            <span className="text-2xl font-semibold text-white">
-              Flowbite
-            </span>
+            <span className="text-2xl font-semibold text-white">Jobber</span>
           </a>
 
           {/* Navbar Links */}
           <ul className="hidden md:flex flex-row space-x-8">
-            {["Home", "About", "Services", "Contact"].map((link, index) => (
-              <li key={index} className="relative group">
-                <a
-                  href="#"
-                  className="text-white px-3 py-2 transition-all focus:outline-none"
-                >
-                  {link}
-                </a>
-                {/* Smooth underline */}
-                <span className="absolute left-0 bottom-[-10px] w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
-              </li>
-            ))}
+            <li className="relative group">
+              <Link
+                to="/"
+                className="text-white px-3 py-2 transition-all focus:outline-none"
+              >
+                Home
+              </Link>
+              {/* Smooth underline */}
+              <span className="absolute left-0 bottom-[-10px] w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+            </li>
+            <li className="relative group">
+              <Link
+                to="dashboard/findjob"
+                className="text-white px-3 py-2 transition-all focus:outline-none"
+              >
+                Find Job
+              </Link>
+              {/* Smooth underline */}
+              <span className="absolute left-0 bottom-[-10px] w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+            </li>
+            <li className="relative group">
+              <Link
+                to="dashboard/postjob"
+                className="text-white px-3 py-2 transition-all focus:outline-none"
+              >
+                Post Job
+              </Link>
+              {/* Smooth underline */}
+              <span className="absolute left-0 bottom-[-10px] w-0 h-[2px] bg-white group-hover:w-full transition-all duration-300"></span>
+            </li>
           </ul>
 
           {/* User Profile Section */}
@@ -81,17 +97,19 @@ export default function Header() {
             {isDropdownVisible && (
               <div className="absolute right-0 mt-32 w-48 bg-white rounded-md shadow-lg dark:bg-gray-800 z-10">
                 {/* Dropdown content */}
-                
+
                 <ul className="py-2">
-                <Link to="dashboard/profile">
-                <li>
-                    <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200">Profile</p>
-                  </li>
-                </Link>
-                  
+                  <Link to="dashboard/profile">
+                    <li>
+                      <p className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200">
+                        Profile
+                      </p>
+                    </li>
+                  </Link>
+
                   <li>
                     <button
-                      onClick={()=>handlelogout()}
+                      onClick={() => handlelogout()}
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
                     >
                       Logout

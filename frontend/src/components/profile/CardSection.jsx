@@ -15,7 +15,7 @@ export default function CardSection() {
         try {
           setLoading(true);
           const response = await fetch(
-            "https://jobber-eosin.vercel.app/dashboard/profile",
+            "https://jobber-server.vercel.app/dashboard/profile",
             {
               headers: {
                 token: Cookies.get("token"),

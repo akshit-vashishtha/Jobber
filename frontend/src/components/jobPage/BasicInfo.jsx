@@ -60,17 +60,14 @@ export default function BasicInfo({ jobId, name, location, salary, postedBy }) {
     console.log(formData);
     if (validateForm()) {
       try {
-        const response = await fetch(
-          "https://jobber-eosin.vercel.app/dashboard/Apply",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              token: Cookies.get("token"),
-            },
-            body: JSON.stringify(formData), // Convert formData to JSON string
-          }
-        );
+        const response = await fetch("https://jobber-server.vercel.app/dashboard/Apply", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: Cookies.get("token"),
+          },
+          body: JSON.stringify(formData), // Convert formData to JSON string
+        });
 
         if (response.ok) {
           const data = await response.json();

@@ -21,7 +21,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
     console.log(applicant._id); // Debugging log to check the applicant's _id
     try {
       const response = await fetch(
-        `https://jobber-eosin.vercel.app/dashboard/profile/${applicant._id}`,
+        `https://jobber-server.vercel.app/dashboard/profile/${applicant._id}`,
         {
           method: "PATCH",
           headers: {
@@ -65,7 +65,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
   const handleDeleteJob = async () => {
     try {
       const response = await fetch(
-        `https://jobber-eosin.vercel.app/dashboard//jobstatus/${selectedJob._id}`,
+        `https://jobber-server.vercel.app/dashboard//jobstatus/${selectedJob._id}`,
         {
           method: "POST",
           headers: {
@@ -87,7 +87,7 @@ export default function PostedSection({ jobs, setjobtrigger }) {
       alert("There was an error deleting the job.");
     }
   };
-
+//hey in this code you are working fine but in my other folder you are not why
   return (
     <div className="w-[98%] rounded-2xl p-4 flex justify-self-center justify-center mb-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[3.5%] w-full">
@@ -232,19 +232,19 @@ export default function PostedSection({ jobs, setjobtrigger }) {
                   </div>
 
                   {/* Action Buttons for Pending Applicants */}
-                  {applicant.status === "pending" && (
+                  {applicant.status === "Pending" && (
                     <div className="mt-4 flex gap-6 justify-end">
                       <button
                         className="bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow hover:bg-green-700 transition duration-200"
                         onClick={() => handleSelectionChange(index, true)}
-                        disabled={applicant.status !== "pending"}
+                        disabled={applicant.status !== "Pending"}
                       >
                         Select
                       </button>
                       <button
                         className="bg-red-600 text-white font-semibold py-2 px-6 rounded-lg shadow hover:bg-red-700 transition duration-200"
                         onClick={() => handleSelectionChange(index, false)}
-                        disabled={applicant.status !== "pending"}
+                        disabled={applicant.status !== "Pending"}
                       >
                         Reject
                       </button>

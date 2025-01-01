@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();  // Use useNavigate hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://jobber-eosin.vercel.app/login", {
+      const response = await fetch("https://jobber-server.vercel.app/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -21,27 +23,22 @@ export default function Login() {
       console.log(data);
 
       if (response.ok) {
-        
-        // document.cookie = `token=${data.token}; path=/; max-age=3600; secure; samesite=strict`;
-
-
         Cookies.set("token", data.token);
         Cookies.set("name", data.user.name);
         Cookies.set("userId", data.user._id);
         console.log("Login successful!");
-       
-        window.location.href = "/dashboard/findjob";
+
+        // Use navigate instead of window.location.href
+        navigate("/dashboard/findjob");
       } else {
         console.error(data.message);
-        alert(data.message); 
+        alert(data.message);
       }
     } catch (error) {
       console.error("Error:", error.message);
       alert("An error occurred during login. Please try again.");
     }
   };
-
-
 
   return (
     <div className="h-screen flex justify-center items-center flex-col gap-[3%] bg-black">
@@ -98,12 +95,11 @@ export default function Login() {
                 <span className="text-white/60 text-sm mr-2">
                   Not a member?
                 </span>
-                <a 
-                  href="#" 
-                  className="text-white underline hover:text-white/80 transition-colors duration-300"
-                >
+                <Link
+                to="/signup"
+                className="text-white underline hover:text-white/80 transition-colors duration-300">
                   Register
-                </a>
+                </Link>
               </div>
             </form>
           </div>

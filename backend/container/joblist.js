@@ -1,5 +1,6 @@
 const joblist = require('../models/joblist');
 const JobMapping = require('../models/jobmapping');
+
 async function HandlePostJob(req, res) {
     console.log(req.body);
     const { name, description, category, skills, budget, deadline, } = req.body;
@@ -9,6 +10,11 @@ async function HandlePostJob(req, res) {
     }
     console.log(req.user);
     try {
+        const existingJob = await joblist.findOne({ name, active: true });
+        if (existingJob) {
+            return res.status(409).json({ message: "Job with this name already exists" });
+        }
+
         const job = new joblist({
             name,
             description,
@@ -19,8 +25,8 @@ async function HandlePostJob(req, res) {
             userId : req.user,
         });
         const userId = req.user;
-        const jobId = job._id;
         await job.save();
+        const jobId = job._id;
         const jobMapping = await JobMapping.findOne({ userId });
         if (jobMapping) {
             jobMapping.posted.push(jobId);
@@ -34,12 +40,11 @@ async function HandlePostJob(req, res) {
             await newJobMapping.save();
         }
 
-        res.status(201).json({ message: "job posted succefully" });
+        res.status(201).json({ message: "job posted successfully" });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "An error occured while posting the job" });
+        res.status(500).json({ message: "An error occurred while posting the job" });
     }
-
 }
 async function HandleGetJob(req, res) {
     try {

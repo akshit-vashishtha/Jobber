@@ -20,23 +20,20 @@ export default function PostJob() {
       deadline: jobdeadline.current.value,
     }
     try {
-      const response = await fetch(
-        "https://jobber-eosin.vercel.app/dashboard/postjob",
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            token: Cookies.get("token"),
-          },
-          body: JSON.stringify(FormData),
-        }
-      );
+      const response = await fetch("https://jobber-server.vercel.app/dashboard/postjob", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          token: Cookies.get("token"),
+        },
+        body: JSON.stringify(FormData),
+      });
       const data = await response.json();
       if (response.ok) {
         navigate('/dashboard/findjob');
         console.log("Job Possted Succefully");
       } else {
-        alert("Failed to post job" + data.message);
+        alert("Failed to post job " + data.message);
       }
     } catch (error) {
       console.error("Error posting job:", error);
