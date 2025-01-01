@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +21,7 @@ export default function Signup() {
       const data = await response.json();
       if (response.ok) {
         alert("Signup successful!");
-        window.location.href = "/login";
+        navigate("/login");
       } else {
         alert(data.message);
       }
